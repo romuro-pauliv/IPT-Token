@@ -6,7 +6,7 @@
 # +--------------------------------------------------------------------------------------------------------------------|
 
 # | Imports |----------------------------------------------------------------------------------------------------------|
-from IPToken.status_code import *
+from app.status_code import *
 
 from flask import current_app, request
 from functools import wraps

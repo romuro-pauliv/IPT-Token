@@ -7,7 +7,7 @@
 
 # | Imports |----------------------------------------------------------------------------------------------------------|
 from flask import Blueprint
-from IPToken.token.decorators import IPToken
+from app.token.decorators import IPToken
 # |--------------------------------------------------------------------------------------------------------------------|
 
 bp = Blueprint('auth', __name__, url_prefix="/auth")
