@@ -47,7 +47,7 @@ The IPT Token will be cached by the user so the next request (like logging into 
 
 ![Token Mode](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/ipt_token_mode.png?raw=true)
 
-When the IPT Token is docked at the server, the token will be required and decrypted. After decryption, the IP address of the HTTP packet that arrived in the request will be compared with the IP encrypted in the token, validating the user efficiently. Furthermore the server's memory will not be used in this process, only its processing, which will be momentary and will not affect other vital server processes.
+When the HTTP package is docked at the server, the IPT Token will be required and decrypted. After decryption, the IP address of the HTTP package that arrived in the request will be compared with the IP encrypted in the token, validating the user efficiently. Furthermore the server's memory will not be used in this process, only its processing, which will be momentary and will not affect other vital server processes.
 
 ---
 
