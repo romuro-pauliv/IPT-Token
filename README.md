@@ -1,4 +1,7 @@
 ## IPT Token
+![](https://img.shields.io/github/repo-size/romuro-pauliv/IPT-Token?style=flat-square) ![](https://img.shields.io/github/last-commit/romuro-pauliv/IPT-Token?style=flat-square) ![](https://img.shields.io/github/license/romuro-pauliv/IPT-Token?style=flat-square)
+
+![](https://github-readme-stats.vercel.app/api?username=romuro-pauliv&theme=blue-green)
 
 The IPT Token module is intended to be an extension to your Flask applications. The module will generate a token with a simple `@generate_token()` decorator set in your route depending on the status code you enter. Then request of this token can be done by `@required_token()` defined in routes that require authentication.
 
