@@ -17,27 +17,37 @@ def my_feed() -> tuple[..., int]:
 ----
 ### Summary
 
-1. Why use IPT Token
+- [Why use IPT Token](https://github.com/romuro-pauliv/IPT-Token#why-use-ipt-token)
 
-2. How the IPT Token works
-2.1. Structure and Encryption
-2.2. HTTP packet IP requirement
-2.3. Function parameters
+- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token#how-the-ipt-token-works)
+    - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token#structure-and-encryption)
+    - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token#http-packet-ip-requirement)
+    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token#http-packet-ip-requirement)
 
-3. Applying the IPT Token object in an app
-3.1. Route structure for proper operation
-3.2. Possible responses from the `@required_token`decorator
+- Applying the IPT Token object in an app
+    - Route structure for proper operation
+    - Possible responses from the `@required_token`decorator
 
-4. Quickstart
-4.1. Import & Use
+- Quickstart
+    - Import & Use
 
-5. Requirements and installation
+- Requirements and installation
 
 ---
 
 ## Why use IPT Token
 
 The standard method of user validation using browser caching and session allocation in server RAM may be unusual for some processes that require a high level of security and a high load of requests to the server. On a gigantic request scale, allocating strings containing the Id of the active user on the server may impact other processing, affecting all users on the network. Also, storing the user cache without further validation can open a loophole for Browser Cache Poisoning.
+
+![Session Mode](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/session_mode.png?raw=true)
+
+With IPT Token there is no memory allocation for the server to remember the user. At the moment the authentication package is sent (in this case we can say that it will be the login credentials) the `@generate_token` function will request the user's IP address and if the login is authorized, the IPToken will be concatenated in the server's response header.
+
+The IPToken will be cached by the user so that in the next requests (like logging into your social network feed) the user's back-end will send the token in the request header.
+
+![Token Mode](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/ipt_token_mode.png?raw=true)
+
+When the IPToken is docked at the server, the token will be required and decrypted. After decryption, the IP address of the HTTP packet that arrived in the request will be compared with the IP encrypted in the token, validating the user efficiently. Furthermore, the server's memory will not be used, only its processing, which will be momentary and will not affect other vital server processes.
 
 ---
 
