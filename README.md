@@ -1,6 +1,6 @@
 ## IPT Token
 
-The IPT Token module is intended to be an extension to your Flask applications. The module will generate a token with a simple `@generate_token()` decorator set in your route depending on the status code you enter. Then you can request this token with a simple `@required_token()` defined in routes that require authentication.
+The IPT Token module is intended to be an extension to your Flask applications. The module will generate a token with a simple `@generate_token()` decorator set in your route depending on the status code you enter. Then request of this token can be done by `@required_token()` defined in routes that require authentication.
 
 ```Python
 @bp.route("/login", methods=["POST"])
@@ -41,19 +41,19 @@ The standard method of user validation using browser caching and session allocat
 
 ![Session Mode](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/session_mode.png?raw=true)
 
-With IPT Token there is no memory allocation for the server to remember the user. At the moment the authentication package is sent (in this case we can say that it will be the login credentials) the `@generate_token` function will request the user's IP address and if the login is authorized, the IPToken will be concatenated in the server's response header.
+With IPT Token there is no memory allocation in the server to remember the user. At the moment the authentication HTTP package is sent (in this case we can say that it will be the login credentials). The `@generate_token` function will request the user's IP address and if the login is authorized, the IPToken will be concatenated in the server's response header.
 
-The IPToken will be cached by the user so that in the next requests (like logging into your social network feed) the user's back-end will send the token in the request header.
+The IPT Token will be cached by the user so the next request (like logging into your social network feed) the user's back-end will send the token in the request header.
 
 ![Token Mode](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/ipt_token_mode.png?raw=true)
 
-When the IPToken is docked at the server, the token will be required and decrypted. After decryption, the IP address of the HTTP packet that arrived in the request will be compared with the IP encrypted in the token, validating the user efficiently. Furthermore, the server's memory will not be used, only its processing, which will be momentary and will not affect other vital server processes.
+When the IPT Token is docked at the server, the token will be required and decrypted. After decryption, the IP address of the HTTP packet that arrived in the request will be compared with the IP encrypted in the token, validating the user efficiently. Furthermore the server's memory will not be used in this process, only its processing, which will be momentary and will not affect other vital server processes.
 
 ---
 
 ## How the IPT Token works
 
-The IPT Token generates a token based on the `SECRET_KEY` of a Flask application by concatenating the IP address of the HTTP packet sent in the `POST` method into a specific route. The token will be sent in the server's HTTP response packet in the header. For this reason, your route response must be in the parameters set for `@generate_token()` to work correctly.
+The IPT Token generates a token based on the `SECRET_KEY` of a Flask application by concatenating the IP address of the HTTP packet sent in the `POST` method into a specific route. The token will be sent in the server's HTTP response packet in the header. For this reason, your route response must follow the parameters set for `@generate_token()` to work correctly.
 
 The `@generate_token()` decorator will not interfere with the structure of your response. Regardless of whether it is an HTML rendering or a json application. The only object that will interfere is the HTTP packet header.
 
@@ -76,7 +76,7 @@ def create_app() -> Flask:
 
 After setting the key in the configuration instance, you will be able to use the decorators. You can view the [quickstart]() module to see the application of the decorators at a glance. 
 
-The structure of the decorator follows the following parameterization:
+The structure of the decorator follows the parameterization bellow:
 
 __[2] Decorator structure__
 ```Python
@@ -116,7 +116,7 @@ token: str = jwt.encode(payload=encode_header,
 )
 ```
 
-The __[3] Token encode__ code block will be wrapped by the `status_code` argument check function giving the programmer freedom to structure his route response in any way.
+The __[3] Token encode__ code block will be wrapped by the `status_code` argument check function, giving the programmer freedom to structure his route response in any way.
 
 __[4] Check condition__
 ```Python
@@ -134,7 +134,7 @@ def wrapper(*args, **kwargs) -> Union[tuple[Any, int], tuple[Any, int, dict]]:
 
 #### Function parameters
 
-In the above structures there are parameters not yet defined in the documentation. Each parameter can be modified by the end programmer to best suit the application created.
+In the above structures there are parameters not yet defined in the documentation. Each parameter can be modified by the end programmer to best suit their application.
 
 __`@generate_token()`__
 | Parameter | Description | Format |
