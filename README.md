@@ -20,10 +20,10 @@ def my_feed() -> tuple[..., int]:
 - [Why use IPT Token](https://github.com/romuro-pauliv/IPT-Token#why-use-ipt-token)
 - Quickstart
     - Import & Use
-- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token#how-the-ipt-token-works)
-    - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token#structure-and-encryption)
-    - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token#http-packet-ip-requirement)
-    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token#http-packet-ip-requirement)
+- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md)
+    - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-encryption)
+    - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#http-packet-ip-requirement)
+    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters)
 - Applying the IPT Token object in an app
     - Route structure for proper operation
     - Possible responses from the `@required_token`decorator
