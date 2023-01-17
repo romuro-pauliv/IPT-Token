@@ -4,10 +4,10 @@
     - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-encryption)
     - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#http-packet-ip-requirement)
     - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters)
-- [Required Token]()
-    - [Structure and Decryption]()
-    - [Remote address validation]()
-    - [Function parameters]()
+- [Required Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#required-token)
+    - [Structure and Decryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-decryption)
+    - [Remote address validation](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#remote-address-validation)
+    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters-1)
 
 ## How the IPT Token works
 
