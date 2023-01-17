@@ -1,3 +1,14 @@
+### Summary
+- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md)
+- [Generate Token]()
+    - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-encryption)
+    - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#http-packet-ip-requirement)
+    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters)
+- [Required Token]()
+    - [Structure and Decryption]()
+    - [Remote address validation]()
+    - [Function parameters]()
+
 ## How the IPT Token works
 
 The IPT Token generates a token based on the `SECRET_KEY` of a Flask application by concatenating the IP address of the HTTP packet sent in the `POST` method into a specific route. The token will be sent in the server's HTTP response packet in the header. For this reason, your route response must follow the parameters set for `@generate_token()` to work correctly.
@@ -14,7 +25,21 @@ HTTP-->>Server: remote_addr
 Server->>Client: Response | status code | Token
 ```
 
+For routes that will require authentication by token, it is necessary to include the `@required_token()` decorator. This will change the response of your route function it the token is invalid or expired.
+
+```mermaid
+sequenceDiagram
+Client->>HTTP: Request to access a page
+HTTP-->>Server: Couping
+Note right of Server: Judging that the \ntoken are validated
+Server-->>HTTP: request a IPtoken
+HTTP-->>Server: IPtoken
+Note right of Server: IPtoken is valid
+Server->>Client: response
+```
+
 ---
+## Generate Token
 
 #### Structure and Encryption
 
@@ -103,3 +128,79 @@ In the above structures there are parameters not yet defined in the documentatio
 | __header_arguments__ | Additional arguments you want to add inside the token to be encrypted. Defaults to {} | Optional: `dict[str, Any]` |
 
 ---
+
+## Required Token
+
+#### Structure and Decryption
+
+The structure of the decorator is similar to the `@generate_token()` decorator where it is possible to set parameters for the decorator.
+
+> (5) Decorator structure
+```Python
+class IPToken(object):
+    def required_token(...):
+        def inner(func: Callable[..., tuple[Any, int]]) -> Callable[..., Union[tuple[Any, int], tuple[Any, int, dict]]]:
+            @wraps(func)
+            def wrapper(*args, **kwargs) -> Union[tuple[Any, int], tuple[Any, int, dict]]:
+                # |-------------------------------------|
+                # | Decrypt and validation of the Token |
+                # |-------------------------------------|
+                return func(*args, **kwargs)
+            return wrapper
+        return inner
+```
+
+Validation is done after decryption the token with the `SECRET_KEY` of the Flask application. Therefore, we created a `token_validation()` function:
+
+> (6) Decryption Token
+```Python
+# Split token string
+try:
+    try:
+        token: str = token.split()[1]
+    except IndexError:
+        return "BAD REQUEST - TOKEN", HTTP_400_BAD_REQUEST
+except AttributeError:
+    return "BAD REQUEST - TOKEN NOT INFORMED", HTTP_400_BAD_REQUEST
+ # Decode token 
+try:
+    try:
+        decode_token: dict[str, Any] = jwt.decode(
+            token,
+            current_app.config['SECRET_KEY'],
+            algorithms=algorithm
+            )
+    except jwt.exceptions.DecodeError:
+        return "INVALID TOKEN", HTTP_400_BAD_REQUEST
+except jwt.exceptions.ExpiredSignatureError:
+    return "EXPIRED TOKEN", HTTP_403_FORBIDDEN
+
+if decode_token['ip'] != request.remote_addr:
+    return "IP ADDRESS DOES NOT MATCH", HTTP_403_FORBIDDEN
+
+return "VALID TOKEN", HTTP_200_OK
+```
+---
+
+#### Remote address validation
+
+With the token data decrypted, it is possible to request the remote address of the packet and compare it with the one registered in the token.
+
+> (7) Token Validation
+```Python
+token: str = request.headers.get("Authorization")
+token_auth: tuple[str, int] = token_authentication(token, algorithm)
+return token_auth if token_auth[1] != HTTP_200_OK else func(*args, **kwargs)
+```
+
+----
+
+#### Function parameters
+
+If you have the encryption algorithm in the `@generate_token()` you must change to the same algorithm in the `@required_token()` decorator.
+
+#### `@required_token()`
+
+| Parameter | Description | Format |
+|-----------|-------------|--------|
+| __algorithm__ | Symmetric keyed hashing algorithm. Defaults to `['HS256']` | Optional:`list[str]` |
