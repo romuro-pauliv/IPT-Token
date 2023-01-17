@@ -4,14 +4,14 @@ The IPT Token generates a token based on the `SECRET_KEY` of a Flask application
 
 The `@generate_token()` decorator will not interfere with the structure of your response. Regardless of whether it is an HTML rendering or a json application. The only object that will interfere is the HTTP packet header.
 
-```seq
-Title: Token System
-Client->HTTP: Login Credentials
-HTTP-->Server: Couping
+```mermaid
+sequenceDiagram
+Client->>HTTP: Login Credentials
+HTTP-->>Server: Couping
 Note right of Server: Judging that the \ncredentials are validated
-Server-->HTTP: request(IP)
-HTTP-->Server: remote_addr
-Server->Client: Response | status code | Token
+Server-->>HTTP: request(IP)
+HTTP-->>Server: remote_addr
+Server->>Client: Response | status code | Token
 ```
 
 ---
@@ -88,21 +88,6 @@ def wrapper(*args, **kwargs) -> Union[tuple[Any, int], tuple[Any, int, dict]]:
 ```
 
 Basically, the operation of the `@generate_token()` decorator condition is:
-
-> (5) Status code condition diagram
-```flow
-st=>start: @generate_token
-op=>operation: status_code decorator parameter
-cond=>condition: status_code == return HTTP code
-e=>end: Generate a token & route return
-new=>end: route return
-
-st->op->cond
-cond(yes)->e
-cond(no)->new
-```
-
----
 
 #### Function parameters
 
