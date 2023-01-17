@@ -17,7 +17,7 @@ def my_feed() -> tuple[..., int]:
 ----
 ### Summary
 
-- [Why use IPT Token](https://github.com/romuro-pauliv/IPT-Token#why-use-ipt-token)
+- [Why use IPT Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/Why-use-IPT-Token.md)
 - Quickstart
     - Import & Use
 - [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md)
