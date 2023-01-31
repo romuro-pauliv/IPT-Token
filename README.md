@@ -19,17 +19,11 @@ def my_feed() -> tuple[..., int]:
 
 ### Summary
 
-- [Quickstart](https://github.com/romuro-pauliv/IPT-Token/tree/package-development/package)
-    - [Import & Use](https://github.com/romuro-pauliv/IPT-Token/tree/package-development/package#installation)
-- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md)
-- [Generate Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#generate-token)
-    - [Structure and Encryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-encryption)
-    - [HTTP packet IP requirement](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#http-packet-ip-requirement)
-    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters)
-- [Required Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#required-token)
-    - [Structure and Decryption](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#structure-and-decryption)
-    - [Remote address validation](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#remote-address-validation)
-    - [Function parameters](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/md/IPT-Token-works.md#function-parameters-1)
+- [Quickstart](https://github.com/romuro-pauliv/IPT-Token/tree/main/package#iptoken)
+    - [Import & Use](https://github.com/romuro-pauliv/IPT-Token/tree/main/package#installation)
+- [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#how-the-ipt-token-works)
+    - [Generate Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#generate-token)
+    - [Required Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#required-token)
 
 ---
 
