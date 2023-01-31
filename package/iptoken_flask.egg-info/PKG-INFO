@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: iptoken-flask
+Version: 0.9.1
+Summary: Decorator system for generating and requiring access tokens for your routes in your Flask application.
+Home-page: https://github.com/romuro-pauliv/IPT-Token
+Author: Rômulo Pauliv
+Author-email: romulopauliv@bk.ru
+License: BSD 3-Clause License
+Platform: UNKNOWN
+
+UNKNOWN
+
