@@ -1,13 +1,11 @@
 # +--------------------------------------------------------------------------------------------------------------------|
-# |                                                                                          IPToken.token.ip_token.py |
+# |                                                                                               package.ipt_token.py |
 # |                                                                                             Author: Pauliv, Rômulo |
 # |                                                                                          email: romulopauliv@bk.ru |
 # |                                                                                                    encoding: UTF-8 |
 # +--------------------------------------------------------------------------------------------------------------------|
 
 # | Imports |----------------------------------------------------------------------------------------------------------|
-from app.status_code import *
-
 from flask import current_app, request
 from functools import wraps
 
@@ -83,9 +81,9 @@ class IPToken(object):
                         try:
                             token: str = token.split()[1]
                         except IndexError:
-                            return "BAD REQUEST - TOKEN", HTTP_400_BAD_REQUEST
+                            return "BAD REQUEST - TOKEN", 400
                     except AttributeError:
-                        return "BAD REQUEST - TOKEN NOT INFORMED", HTTP_400_BAD_REQUEST
+                        return "BAD REQUEST - TOKEN NOT INFORMED", 400
                     # |------------------------------------------------------------------------------------------------|
                     # | Decode token |---------------------------------------------------------------------------------|
                     try:
@@ -96,18 +94,18 @@ class IPToken(object):
                                 algorithms=algorithm
                             )
                         except jwt.exceptions.DecodeError:
-                            return "INVALID TOKEN", HTTP_400_BAD_REQUEST
+                            return "INVALID TOKEN", 400
                     except jwt.exceptions.ExpiredSignatureError:
-                        return "EXPIRED TOKEN", HTTP_403_FORBIDDEN
+                        return "EXPIRED TOKEN", 403
                     # |------------------------------------------------------------------------------------------------|
                     if decode_token['ip'] != request.remote_addr:
-                        return "IP ADDRESS DOES NOT MATCH", HTTP_403_FORBIDDEN
+                        return "IP ADDRESS DOES NOT MATCH", 403
         
-                    return "VALID TOKEN", HTTP_200_OK
+                    return "VALID TOKEN", 200
                 # Token Authentication |-------------------------------------------------------------------------------|
                 token: str = request.headers.get("Authorization")
                 token_auth: tuple[str, int] = token_authentication(token, algorithm)
-                return token_auth if token_auth[1] != HTTP_200_OK else func(*args, **kwargs)
+                return token_auth if token_auth[1] != 200 else func(*args, **kwargs)
                 # |----------------------------------------------------------------------------------------------------|
             return wrapper
         return inner
