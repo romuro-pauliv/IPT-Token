@@ -22,8 +22,8 @@ def my_feed() -> tuple[..., int]:
 - [Quickstart](https://github.com/romuro-pauliv/IPT-Token/tree/main/package#iptoken)
     - [Import & Use](https://github.com/romuro-pauliv/IPT-Token/tree/main/package#installation)
 - [How the IPT Token works](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#how-the-ipt-token-works)
-    - [Generate Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#generate-token)
-    - [Required Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#required-token)
-- [Tests]()
+    - [@Generate Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#generate-token)
+    - [@Required Token](https://github.com/romuro-pauliv/IPT-Token/blob/main/docs/IPT-Token-works.md#required-token)
+- [Tests](https://github.com/romuro-pauliv/IPT-Token/tree/main/tests#tests)
 ---
 
