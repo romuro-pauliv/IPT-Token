@@ -1,9 +1,0 @@
-README.rst
-setup.py
-iptoken/__init__.py
-iptoken/module_iptoken.py
-iptoken_flask.egg-info/PKG-INFO
-iptoken_flask.egg-info/SOURCES.txt
-iptoken_flask.egg-info/dependency_links.txt
-iptoken_flask.egg-info/requires.txt
-iptoken_flask.egg-info/top_level.txt
