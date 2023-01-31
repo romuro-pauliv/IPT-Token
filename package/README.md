@@ -8,7 +8,7 @@ The code implements a `JWT` (JSON Web Token) token generation and token authenti
 
 ### Installation
 
-To install run the command:
+[Download the package](https://github.com/romuro-pauliv/IPT-Token/raw/package-development/package/dist/iptoken-flask-0.9.1.tar.gz) and run the command bellow to install:
 
 ```
 pip install iptoken-flask-0.9.C1.tar.gz
